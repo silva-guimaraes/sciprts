@@ -1,0 +1,16 @@
+#!/usr/bin/bash
+TARGET=$(fzf -i)
+
+if [ -z "$TARGET" ]; then
+    echo vazio! 
+    exit 0
+fi 
+echo $TARGET 
+
+if [ -w "$TARGET" ]; then
+    CHECKPOINT=$PWD
+    cd "$(dirname "$TARGET")" && vim "$(basename "$TARGET")"
+    cd $CHECKPOINT
+else 
+    sudoedit "$TARGET"
+fi

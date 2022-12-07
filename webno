@@ -1,0 +1,8 @@
+#!/usr/bin/bash 
+
+[[ $# -lt 1 ]] && exit 1 
+
+ls $1 && \
+    NOME_OUTPUT=$(echo $1 | sed -E 's/webp/jpg/g') && \
+    ffmpeg -hide_banner -loglevel error -i $1 $NOME_OUTPUT && \
+    echo $NOME_OUTPUT

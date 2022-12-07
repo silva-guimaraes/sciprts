@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+sleep 0.2 ; scrot -s -e 'mv $f ~/pictures/screenshot && printf "~/pictures/screenshot/$f" | xclip -sel clipboard' '%F_%T.png'\
+    && notify-send -u 'low' "screenshot saved to ~/Pictures/screenshot"\
+    || notify-send -u 'critical' "screenshot failed"
